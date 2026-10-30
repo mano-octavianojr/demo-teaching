@@ -1,0 +1,619 @@
+\documentclass[aspectratio=169,12pt]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{pgfpages}
+\usepackage{graphicx}
+\definecolor{Forest}{HTML}{006747}
+\definecolor{Ink}{HTML}{17312B}
+\definecolor{CodeBg}{HTML}{F2F6F4}
+\setbeamercolor{normal text}{fg=Ink,bg=white}
+\setbeamercolor{structure}{fg=Forest}
+\setbeamercolor{frametitle}{fg=Forest}
+\setbeamercolor{alerted text}{fg=Forest}
+\setbeamertemplate{navigation symbols}{}
+% DLSU CCS branding. Keep the PNG beside this source when sharing.
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox to \paperwidth{%
+    \hspace{5mm}%
+    \raisebox{-1mm}{\includegraphics[height=5mm]{DLSU-CCS-Logo-Clear.png}}%
+    \hspace{3mm}\scriptsize DLSU College of Computer Studies%
+    \hfill Python Foundations\quad\insertframenumber/\inserttotalframenumber\hspace{5mm}%
+  }\vspace{2mm}%
+}
+\titlegraphic{\includegraphics[height=13mm]{DLSU-CCS-Logo-Clear.png}}
+\institute{De La Salle University\\College of Computer Studies}
+\setbeamersize{text margin left=9mm,text margin right=9mm}
+\setbeamerfont{frametitle}{size=\LARGE,series=\bfseries}
+\setbeameroption{hide notes}
+% For presenter notes, replace the line above with:
+% \setbeameroption{show notes on second screen=right}
+% For a printable notes document, use: \setbeameroption{show only notes}
+\lstset{language=Python,basicstyle=\ttfamily\normalsize,
+ keywordstyle=\color{Forest}\bfseries,commentstyle=\color{gray},
+ stringstyle=\color{blue!55!black},backgroundcolor=\color{CodeBg},
+ showstringspaces=false,columns=fullflexible,keepspaces=true,
+ breaklines=true,tabsize=4,frame=none,aboveskip=6pt,belowskip=6pt}
+\title{Python Foundations}
+\subtitle{A first program, student records, and files}
+\author{Introductory college lesson}
+\date{}
+\begin{document}
+\section{The task and the language}
+\begin{frame}[plain,fragile]
+\titlepage
+\note{0:30. Introduce the fictional grade analyzer: four records become a saved class summary. Ask who has used a spreadsheet formula. Connect instructions to familiar calculations. Short demo: begin here for 20 seconds.}
+\end{frame}
+\begin{frame}[fragile]{Our task: a class grade report}
+\textbf{Our task: a class grade report}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{lrrrr}
+Student & Maya & Luis & Ari & Bea \\
+Grade & 88 & 72 & 95 & 75 \\
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item Calculate the average: \textbf{82.50}.
+\item Identify passing students using an illustrative threshold of 75.
+\item Build reusable code and save a report we can read later.
+\end{itemize}
+
+\note{Begin with the result students will build. Ask what information the report needs. We will represent the data, process it, organize the steps and save the result. 0:40. These are introductory outcomes, not mastery claims. Ask students to name one result they want a program to calculate. Explain that practice notebooks accompany the lesson.}
+\end{frame}
+\begin{frame}[fragile]{Python and a program}
+\begin{itemize}
+\item Python is a general-purpose programming language.
+\item A program gives the computer explicit instructions.
+\item The interpreter executes our Python code.
+\item Today: calculate a class average from fictional grades.
+\end{itemize}
+
+\note{0:50. Explain interpreter as the program that runs Python instructions. Avoid installation detail here. Source: https://docs.python.org/3/tutorial/ .}
+\end{frame}
+\begin{frame}[fragile]{A brief history of Python}
+\begin{itemize}
+\item \textbf{1989:} Guido van Rossum began developing Python at CWI in the Netherlands.
+\item \textbf{1991:} Python became publicly available.
+\item Its name comes from the comedy group \textit{Monty Python}.
+\item Readable syntax and practical scripting shaped its early design.
+\end{itemize}
+\note{0:40. Explain that Python began as a practical scripting language and grew into a general-purpose language. Avoid a long version timeline. Source: \url{https://docs.python.org/3/faq/general.html}.}
+\end{frame}
+\begin{frame}[fragile]{Why choose Python?}
+\begin{itemize}
+\item \textbf{Readable syntax:} less syntactic boilerplate than languages such as Java for small programs.
+\item \textbf{Quick experiments:} test ideas interactively in a notebook or interpreter.
+\item \textbf{Reusable tools:} a large standard library and packages for many applications.
+\item \textbf{Portability:} use Python on Windows, macOS, and Linux.
+\end{itemize}
+\medskip
+\textbf{Tradeoff:} pure Python loops often run slower than compiled C or C++ equivalents.
+\note{0:40. Present these as reasons to choose Python for this lesson and rapid prototyping, rather than a claim it is best for every task. Mention that libraries may perform expensive operations using compiled code. Sources: \url{https://www.python.org/doc/essays/blurb/} and \url{https://docs.python.org/3/glossary.html\#term-interpreted}.}
+\end{frame}
+\begin{frame}[fragile]{Interpreter and compiler}
+\begin{itemize}
+\item A \textbf{compiler} translates code into another form before that form executes.
+\item An \textbf{interpreter} executes instructions while the program runs.
+\item \textbf{Typical C workflow:} compile source into an executable, then run it.
+\item \textbf{Python workflow:} run the source through the Python interpreter.
+\end{itemize}
+\medskip
+\textbf{Both can work together:} CPython first compiles source to bytecode, then executes that bytecode.
+\note{Bridge to the first code: we now know what executes our instructions. The next slide shows our first visible result. 0:50. Explain translation versus execution without claiming that Python never compiles or simply executes source line by line. CPython is the standard Python implementation. Bytecode is an intermediate instruction format, not a native machine-code executable. Ask whether Python can use both compilation and interpretation. Answer yes. Source: \url{https://docs.python.org/3/glossary.html\#term-interpreted}.}
+\end{frame}
+\section{One student: values and calculations}
+\begin{frame}[fragile]{Our first output}
+\begin{lstlisting}
+print("Hello, Maya!")
+print(88)
+\end{lstlisting}
+\textbf{Expected:} \texttt{Hello, Maya!}, then \texttt{88} on separate lines.
+
+\note{0:50. Ask students to predict which line appears first. Explain parentheses call print and quotes delimit text. Run lesson 01 first code cell, whose greeting also includes a welcome line.}
+\end{frame}
+\begin{frame}[fragile]{Comments, order, and indentation}
+\begin{lstlisting}
+# Display the student first.
+print("Maya")
+print("Grade:", 88)
+\end{lstlisting}
+\begin{itemize}
+\item Python runs these statements in order.
+\item A comment explains intent.
+\item Indented blocks group code inside conditions and loops.
+\end{itemize}
+
+\note{0:50. Expected Maya then Grade: 88. Point at the comment and explain it produces no output. Notebook cells share state. Restart and run all to check reproducibility. Explain four spaces later when a real block appears.}
+\end{frame}
+\begin{frame}[fragile]{Variables name values}
+\begin{lstlisting}
+name = "Maya"
+grade = 88
+print(name, grade)
+\end{lstlisting}
+\textbf{Expected:} \texttt{Maya 88}
+\begin{itemize}
+\item \texttt{=} assigns a value to a name.
+\item Use descriptive names. Capitalization matters.
+\end{itemize}
+
+\note{1:10. Ask what changes if grade becomes 90. Explain the right side is evaluated before assignment. Short demo: 30 seconds, show just grade = 88 and print(grade).}
+\end{frame}
+\begin{frame}[fragile]{Common value types}
+\begin{lstlisting}
+name = "Maya"       # str: text
+grade = 88          # int: whole number
+weight = 0.5        # float: decimal
+is_present = True   # bool: true/false
+\end{lstlisting}
+\texttt{type(grade)} tells us the value is an integer.
+\note{1:00. Ask whether quotation marks change the type of 88. Explain Python infers the type from the value, and a name can later refer to another value. Avoid going into memory representation.}
+\end{frame}
+\begin{frame}[fragile]{Arithmetic and grouping}
+\begin{lstlisting}
+total = 88 + 72 + 95 + 75
+average = total / 4
+print(average)
+print((2 + 3) * 4)
+\end{lstlisting}
+\textbf{Expected:} \texttt{82.5} and \texttt{20}
+\par Other operators: \texttt{-}, \texttt{*}, \texttt{//}, \texttt{\%}, \texttt{**}.
+\note{1:20. Work the total 330 aloud. Distinguish / division, // floor division, percent remainder and ** power. Optional quick prediction: 7 percent 2 is 1. For 30 minutes omit secondary operators.}
+\end{frame}
+\begin{frame}[fragile]{Converting text to numbers}
+\begin{lstlisting}
+grade_text = "88"
+grade = float(grade_text)
+print(grade + 2)
+\end{lstlisting}
+\textbf{Expected:} \texttt{90.0}
+\begin{itemize}
+\item CSV fields and keyboard input arrive as text.
+\item Conversion makes arithmetic possible.
+\end{itemize}
+
+\note{1:30. Predict what string concatenation does: "88" + "2" gives "882". Explain int versus float and that float("absent") will raise ValueError. Do not introduce input prompts into the runnable notebook sequence.}
+\end{frame}
+\begin{frame}[fragile]{Common errors and useful feedback}
+\begin{itemize}
+\item \texttt{SyntaxError}: Python cannot parse the statement.
+\item \texttt{NameError}: a name has not been defined.
+\item \texttt{TypeError}: an operation receives an unsuitable type.
+\item \texttt{ValueError}: a value cannot be used as requested.
+\end{itemize}
+
+\note{1:30. Demonstrate the caught float("absent") example in lesson 05. Explain reading the last traceback line and checking the indicated source line. Syntax errors must be fixed before a cell can run. For 30 minutes show only one conversion error.}
+\end{frame}
+\begin{frame}[fragile]{Strings and formatted output}
+\begin{lstlisting}
+name = "  Maya  "
+name = name.strip()
+grade = 88
+print(f"{name}: {grade:.1f}")
+\end{lstlisting}
+\textbf{Expected:} \texttt{Maya: 88.0}
+\par An f-string inserts values. \texttt{:.1f} displays one decimal place.
+\note{1:10. Explain strip removes surrounding whitespace and returns new text. Ask why cleaning a CSV name might help. Name dot strip is a method call on the string.}
+\end{frame}
+\section{A class: collections}
+\begin{frame}[fragile]{Lists keep values in order}
+\begin{lstlisting}
+grades = [88, 72, 95, 75]
+print(grades[0])
+print(grades[-1])
+\end{lstlisting}
+\textbf{Expected:} \texttt{88} and \texttt{75}
+\par Indexing starts at zero. Index \texttt{-1} selects the last value.
+\note{Bridge from one student to a class: separate grade variables become awkward as the class grows. A list stores several grades in order. 1:20. Have students predict grades[1], answer 72. Explain square brackets create the list or select one element depending on context. Short demo: 30 seconds to show list and first item.}
+\end{frame}
+\begin{frame}[fragile]{Adding and counting list items}
+\begin{lstlisting}
+grades = [88, 72, 95]
+grades.append(75)
+print(grades)
+print(len(grades))
+\end{lstlisting}
+\textbf{Expected:} \texttt{[88, 72, 95, 75]} and \texttt{4}
+
+\note{1:00. Explain append changes the list, len returns its size. Ask what index would be invalid for this four-item list. Answer 4 or greater on the positive side.}
+\end{frame}
+\begin{frame}[fragile]{Dictionaries name each field}
+\begin{lstlisting}
+student = {"name": "Maya", "grade": 88}
+print(student["name"])
+print(student["grade"])
+\end{lstlisting}
+\textbf{Expected:} \texttt{Maya} and \texttt{88}
+\par Keys label values. A missing key raises \texttt{KeyError}.
+\note{1:20. Contrast a numeric list position with a meaningful dictionary key. Ask students to identify the key and value for grade. No need to discuss hashing.}
+\end{frame}
+\begin{frame}[fragile]{A list of student records}
+\begin{lstlisting}
+students = [
+    {"name": "Maya", "grade": 88},
+    {"name": "Luis", "grade": 72},
+    {"name": "Ari", "grade": 95},
+    {"name": "Bea", "grade": 75},
+]
+print(students[1]["name"])
+\end{lstlisting}
+\textbf{Expected:} \texttt{Luis}. Each name stays with its grade.
+
+\note{1:10. Trace selection in two steps: get the second dictionary, then its name field. These are the same four students introduced in the opening task. The notebook separately practices adding Ari. For 30 minutes give this exercise as follow-up.}
+\end{frame}
+\section{Processing the class}
+\begin{frame}[fragile]{Comparisons produce Boolean values}
+\begin{lstlisting}
+grade = 75
+print(grade >= 75)
+print(grade == 75)
+print(grade < 75)
+\end{lstlisting}
+\textbf{Expected:} \texttt{True}, \texttt{True}, \texttt{False}
+\par A passing threshold of 75 is an illustrative teaching rule.
+\note{We have represented the four records. Next we need a rule to decide who passes before repeating that rule for everyone. 1:00. Emphasize assignment = versus equality ==. Ask whether the boundary grade 75 passes under >=. State clearly that this is not an institutional policy.}
+\end{frame}
+\begin{frame}[fragile]{A condition selects a branch}
+\begin{lstlisting}
+grade = 75
+if grade >= 75:
+    print("Pass")
+else:
+    print("Needs practice")
+\end{lstlisting}
+\textbf{Expected:} \texttt{Pass}
+
+\note{1:30. Point out colons and four-space indentation. Ask students to predict grade 74. Only one branch runs. Remind students threshold is illustrative.}
+\end{frame}
+\begin{frame}[fragile]{Combining conditions}
+\begin{lstlisting}
+grade = 88
+if 0 <= grade and grade <= 100:
+    print("Valid grade")
+else:
+    print("Check the value")
+\end{lstlisting}
+\textbf{Expected:} \texttt{Valid grade}
+\par \texttt{and} requires both conditions. \texttt{or} requires at least one.
+\note{1:00. Ask students to try -1 and 101 mentally. Mention elif supports additional branches, but do not add another example in the timed lesson. For 30 minutes summarize this slide.}
+\end{frame}
+\begin{frame}[fragile]{A loop visits every grade}
+\begin{lstlisting}
+grades = [88, 72, 95, 75]
+for grade in grades:
+    print(grade)
+print("Finished")
+\end{lstlisting}
+\begin{itemize}
+\item Python takes the next item and assigns it to grade.
+\item The indented body runs once for each item.
+\end{itemize}
+
+\note{One condition handles one grade. A loop lets us visit every grade without copying the same instruction four times. 0:35. Define iteration as one repetition. Trace this exact list across the next five slides. Ask how often Finished will print. Short demo: 40 seconds here, summarize the trace slides.}
+\end{frame}
+\begin{frame}[fragile]{Loop step 1: grade is 88}
+\begin{lstlisting}
+# Iteration 1: Python assigns the next item.
+grade = 88
+print(grade)
+\end{lstlisting}
+\textbf{Output so far:} 88 (one per line).
+\par The loop returns to the header for the next item.
+
+\note{0:20. This is a trace of the loop body, not an additional assignment to insert into the loop. Ask learners to predict the next grade.}
+\end{frame}
+\begin{frame}[fragile]{Loop step 2: grade is 72}
+\begin{lstlisting}
+# Iteration 2: Python assigns the next item.
+grade = 72
+print(grade)
+\end{lstlisting}
+\textbf{Output so far:} 88, 72 (one per line).
+\par The loop returns to the header for the next item.
+
+\note{0:20. This is a trace of the loop body, not an additional assignment to insert into the loop. Ask learners to predict the next grade.}
+\end{frame}
+\begin{frame}[fragile]{Loop step 3: grade is 95}
+\begin{lstlisting}
+# Iteration 3: Python assigns the next item.
+grade = 95
+print(grade)
+\end{lstlisting}
+\textbf{Output so far:} 88, 72, 95 (one per line).
+\par The loop returns to the header for the next item.
+
+\note{0:20. This is a trace of the loop body, not an additional assignment to insert into the loop. Ask learners to predict the next grade.}
+\end{frame}
+\begin{frame}[fragile]{Loop step 4: grade is 75}
+\begin{lstlisting}
+# Iteration 4: Python assigns the next item.
+grade = 75
+print(grade)
+\end{lstlisting}
+\textbf{Output so far:} 88, 72, 95, 75 (one per line).
+\par The fourth item is complete. Python checks for another item.
+
+\note{0:20. This is a trace of the loop body, not an additional assignment to insert into the loop. Ask whether there is a fifth grade. There is not.}
+\end{frame}
+\begin{frame}[fragile]{After the final iteration}
+\begin{lstlisting}
+# The loop has no more items.
+print("Finished")
+\end{lstlisting}
+\textbf{Complete output:} 88, 72, 95, 75, then Finished.
+\begin{itemize}
+\item Python leaves the loop when the list is exhausted.
+\item Finished prints once because it is outside the loop.
+\end{itemize}
+
+\note{0:30. Point back to the unindented statement on the overview slide. A nonempty for loop leaves grade referring to its last assigned item, but focus on flow. Ask how an empty list changes the output: only Finished prints.}
+\end{frame}
+\begin{frame}[fragile]{An accumulator builds a total}
+\begin{lstlisting}
+grades = [88, 72, 95, 75]
+total = 0
+for grade in grades:
+    total += grade
+average = total / len(grades)
+print(f"Average: {average:.2f}")
+\end{lstlisting}
+\textbf{Expected:} Average: 82.50
+
+\note{0:45. Explain total += grade means total = total + grade. The next slide makes every update explicit. Short demo: 45 seconds here.}
+\end{frame}
+\begin{frame}[fragile]{The total after each iteration}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{rrrr}
+Iteration & grade & Calculation & New total \\
+\hline
+Start & & & 0 \\
+1 & 88 & $0 + 88$ & 88 \\
+2 & 72 & $88 + 72$ & 160 \\
+3 & 95 & $160 + 95$ & 255 \\
+4 & 75 & $255 + 75$ & 330 \\
+\end{tabular}
+\end{center}
+\textbf{After the loop:} $330 / 4 = 82.50$.
+
+\note{0:45. Ask learners to calculate each new total before revealing it verbally. Explain why putting total = 0 inside the loop would reset the running total.}
+\end{frame}
+\begin{frame}[fragile]{Collecting passing names}
+\begin{lstlisting}
+passing_names = []
+for student in students:
+    if student["grade"] >= 75:
+        passing_names.append(student["name"])
+print(passing_names)
+\end{lstlisting}
+\textbf{Expected:} Maya, Ari, and Bea pass. Luis needs practice.
+
+\note{Combine the two tools we just learned: repeat over records, then choose names using a condition. The list contains all four original students. 1:30. Demonstrate nested indentation. With all four bundled records, names are Maya, Ari, Bea. Ask whether Bea passes at exactly 75. Notebook 04 includes all four records.}
+\end{frame}
+\section{Reusable steps: functions}
+\begin{frame}[fragile]{Functions organize repeated work}
+\begin{lstlisting}
+def show_heading():
+    print("Student grade report")
+
+show_heading()
+\end{lstlisting}
+\begin{itemize}
+\item \texttt{def} defines a reusable function.
+\item The indented body runs when we call \texttt{show\_heading()}.
+\item Next, we will vary its inputs and returned values.
+\end{itemize}
+
+\note{0:40. We can now calculate and filter grades, but want reusable steps. Point to the definition and then the call. Defining the function does not run its body. Introduce parameters and return values only as the following examples need them.}
+\end{frame}
+\begin{frame}[fragile]{No parameters, no explicit return}
+\begin{lstlisting}
+def show_heading():
+    print("Student grade report")
+
+show_heading()
+\end{lstlisting}
+\textbf{Output:} Student grade report
+\begin{itemize}
+\item Empty parentheses mean no parameters.
+\item The function displays text and implicitly returns None.
+\end{itemize}
+
+\note{0:40. Explain no return means no explicit return statement. Every Python function still returns a value, None by default. Ask whether the heading prints when the function is only defined.}
+\end{frame}
+\begin{frame}[fragile]{With a parameter, no explicit return}
+\begin{lstlisting}
+def greet_student(name):
+    print(f"Hello, {name}!")
+
+greet_student("Maya")
+greet_student("Luis")
+\end{lstlisting}
+\textbf{Output:} Hello, Maya! then Hello, Luis!
+\par name is a parameter. Maya and Luis are arguments. The function returns None.
+
+\note{0:40. Ask which part changes between calls. Name is a parameter, Maya and Luis are arguments. The printed text is an effect, not a returned string.}
+\end{frame}
+\begin{frame}[fragile]{No parameters, with a return value}
+\begin{lstlisting}
+def default_threshold():
+    return 75
+
+threshold = default_threshold()
+print(threshold)
+\end{lstlisting}
+\textbf{Output:} 75
+\par No input is needed. The caller receives a value it can reuse.
+
+\note{0:40. Explain the illustrative threshold is fixed inside this function. Calling without print would return 75 to the caller but would not print in a script. Notebook expression display is separate from print.}
+\end{frame}
+\begin{frame}[fragile]{With a parameter and a return value}
+\begin{lstlisting}
+def mean_grade(grades):
+    return sum(grades) / len(grades)
+
+average = mean_grade([88, 72, 95, 75])
+print(f"Average: {average:.2f}")
+\end{lstlisting}
+\textbf{Output:} Average: 82.50
+\par This first version expects a nonempty list.
+
+\note{0:50. Sum is the built-in equivalent of the earlier running total. The list enters as an argument and the mean returns to average. Short demo: 45 seconds definition and 30 seconds call.}
+\end{frame}
+\begin{frame}[fragile]{Displaying a value and returning it}
+\begin{lstlisting}
+def show_grade(grade):
+    print(grade)
+
+result = show_grade(88)
+print(result)
+\end{lstlisting}
+\textbf{Output:} 88, then None.
+\par A returned value can be saved and used in another calculation.
+
+\note{0:45. First output is the print inside the function. Second output is the implicit return stored in result. Ask how to change the function to return grade instead. Answer replace print(grade) with return grade.}
+\end{frame}
+\begin{frame}[fragile]{Handling an empty input}
+\begin{lstlisting}
+def mean_grade(grades):
+    if not grades:
+        return None
+    return sum(grades) / len(grades)
+
+print(mean_grade([]))
+\end{lstlisting}
+\textbf{Output:} None
+\par The early return prevents division by zero.
+
+\note{0:40. This replaces the earlier nonempty-only version. Ask what sum and len would be for an empty list. Both are zero. Explain the caller must handle None before formatting a decimal.}
+\end{frame}
+\begin{frame}[fragile]{A function with a default}
+\begin{lstlisting}
+def is_passing(grade, threshold=75):
+    return grade >= threshold
+
+print(is_passing(75))
+print(is_passing(75, threshold=80))
+\end{lstlisting}
+\textbf{Expected:} \texttt{True} and \texttt{False}
+
+\note{0:40. Identify both parameters. Explain the second call replaces the default. Optional extension: students write grade\_label returning a string. For 30 minutes leave this slide for reference.}
+\end{frame}
+\section{Keeping results: files}
+\begin{frame}[fragile]{Paths locate files}
+\begin{lstlisting}
+from pathlib import Path
+output_dir = Path("outputs")
+output_dir.mkdir(parents=True, exist_ok=True)
+report_path = output_dir / "grade_summary.txt"
+\end{lstlisting}
+\par A relative path starts from the current working directory.
+\note{Our reusable code computes a report, but variables disappear when the session ends. A file preserves the result. 1:00. Explain import and Path as a standard-library tool. Slash joins paths across operating systems. Notebook setup resolves root versus notebooks directory. Script anchors paths beside its own file. Short demo: 25 seconds.}
+\end{frame}
+\begin{frame}[fragile]{Writing a text file}
+\begin{lstlisting}
+with report_path.open("w", encoding="utf-8") as file:
+    file.write(f"Class average: {average:.2f}\n")
+\end{lstlisting}
+\begin{itemize}
+\item \texttt{w} creates a file or replaces its contents.
+\item \texttt{with} closes the file when the block ends.
+\item \texttt{\textbackslash n} represents a newline.
+\end{itemize}
+
+\note{1:10. Warn concretely that w replaces existing content, so write to outputs. Short demo: 35 seconds, run and show the file. Existing student CSV is never overwritten automatically.}
+\end{frame}
+\begin{frame}[fragile]{Reading a text file}
+\begin{lstlisting}
+with report_path.open("r", encoding="utf-8") as file:
+    report = file.read()
+print(report, end="")
+\end{lstlisting}
+\textbf{Expected:} \texttt{Class average: 82.50}
+\par \texttt{r} reads. \texttt{a} appends. A missing file raises \texttt{FileNotFoundError}.
+\note{1:00. Explain end empty avoids printing a second newline because the file already contains one. Ask which mode should preserve old text while adding more. Answer a. Short demo: 25 seconds.}
+\end{frame}
+\begin{frame}[fragile]{CSV stores rows and columns}
+\begin{lstlisting}
+name,grade
+Maya,88
+Luis,72
+Ari,95
+Bea,75
+\end{lstlisting}
+\begin{itemize}
+\item The first row names the fields.
+\item Each following row represents one student.
+\item Numeric-looking CSV fields arrive as text.
+\end{itemize}
+
+\note{We have saved and reopened text. Now move the original student records into a structured file so we can read a class without typing each dictionary. 0:50. Explain CSV means comma-separated values. Show data/grades.csv. No downloads are needed in Colab because lesson 06 creates this data if missing. Ask what happens if we add a fifth row.}
+\end{frame}
+\begin{frame}[fragile]{Reading CSV records}
+\begin{lstlisting}
+import csv
+csv_path = Path("data") / "grades.csv"
+students = []
+with csv_path.open("r", newline="", encoding="utf-8") as file:
+    for row in csv.DictReader(file):
+        student = {"name": row["name"],
+                   "grade": float(row["grade"])}
+        students.append(student)
+\end{lstlisting}
+\par The file gives us the same list of student dictionaries.
+
+\note{1:10. This is the core reading pattern, assuming valid data. The full notebook adds header and grade validation. DictReader maps column headers to string fields. newline empty lets csv handle line endings. Source: https://docs.python.org/3/library/csv.html .}
+\end{frame}
+\section{The finished report and next steps}
+\begin{frame}[fragile]{The complete grade analyzer}
+\begin{itemize}
+\item \texttt{ensure\_sample\_data}: create fictional data if missing.
+\item \texttt{read\_students}: load and validate records.
+\item \texttt{summarize}: calculate the average and passing names.
+\item \texttt{write\_report}: save a readable result.
+\end{itemize}
+
+\note{Connect the project before showing helper calls: read records, summarize them, then write a report. These helper names refer to the complete notebook implementation. 0:40. Run lesson 06 end to end before class. During teaching show the final execution cell. Local equivalent is python grade\_analyzer.py. Short demo: 25 seconds to connect the small mean-file example to the completed project.}
+\end{frame}
+\begin{frame}[fragile]{The saved summary}
+\begin{lstlisting}
+report = summarize(students)
+write_report(report_path, report)
+print(report, end="")
+\end{lstlisting}
+\textbf{Expected:} 4 students, average 82.50, 3 passing: Maya, Ari, Bea.
+\par The full helper functions appear in lesson 06 and the script.
+\note{0:50. Connect each helper to earlier ideas. Show actual generated report. Explain empty classes receive a message and invalid CSV grades receive feedback. Files in a Colab runtime are temporary: download reports before runtime reset.}
+\end{frame}
+\begin{frame}[fragile]{Practice: a different threshold}
+\begin{itemize}
+\item Use a threshold of 90 for the same four students.
+\item Predict the passing names before running the code.
+\item Save a second report so you can compare results.
+\end{itemize}
+
+\note{0:40. Answer: Ari only, average remains 82.50. The solution is separated in lesson 06. For 45 minutes allocate an additional five minutes to this exercise. Ask why changing the threshold does not change the class average.}
+\end{frame}
+\begin{frame}[fragile]{Where Python can lead}
+\begin{itemize}
+\item \href{https://www.djangoproject.com/}{Django}: build web applications.
+\item \href{https://numpy.org/}{NumPy}: numerical arrays used in data analysis.
+\item \href{https://www.tensorflow.org/}{TensorFlow}: machine learning and AI applications.
+\item These later topics build on the foundations taught today.
+\end{itemize}
+
+\note{The saved report completes our original task. Relate the same skills to future tools: Django accepts and saves records, NumPy processes numeric collections, TensorFlow learns from data. 1:00. Ask which application interests the class. Clarify these are separate tools in the Python ecosystem and are not needed for this lesson. Sources: https://www.djangoproject.com/ , https://numpy.org/ , https://www.tensorflow.org/ .}
+\end{frame}
+\begin{frame}[fragile]{What comes next}
+\begin{itemize}
+\item Values and collections represent information.
+\item Conditions, loops, and functions process it.
+\item Files preserve the results after a program finishes.
+\item Next: practice these skills before Django, NumPy, or TensorFlow.
+\end{itemize}
+
+\note{0:40. Exit ticket: explain one input, one processing step and one output of the analyzer. Short demo: 15 seconds. Reference links and full setup instructions are in README. Plan approximately 42 minutes for the complete narrative, excluding setup.}
+\end{frame}
+\end{document}
