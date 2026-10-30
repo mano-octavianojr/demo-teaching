@@ -108,8 +108,6 @@ The source remains open in Codex's built-in LaTeX editor. Its current single-fil
 
 Slide notes target approximately 42 minutes. Running Python setup stays in this README rather than the slides. For 45 minutes add three minutes of guided practice. For 30 minutes summarize designated reference slides. The short route has a separate six-minute schedule in the instructor guide. Timing is a delivery target, not a recorded classroom rehearsal.
 
-The adapted `nu_template_example.tex` is a separate five-slide DLSU CCS Python teaching example. It no longer depends on the unavailable NU life-insurance package and uses the same supplied logo.
-
 ## Repository
 
 The materials are hosted at [mano-octavianojr/demo-teaching](https://github.com/mano-octavianojr/demo-teaching) on the `main` branch. All examples use fictional student data.
