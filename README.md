@@ -2,6 +2,8 @@
 
 A beginner college lesson using a fictional **student grade analyzer**. The 48-slide presentation covers Python through text and CSV file reading and writing. Allow **42 minutes**, or use the instructor guide for 30-minute, 45-minute, and 6-minute routes.
 
+All six lessons are sections of one [Python Foundations notebook](notebooks/python_foundations.ipynb), with clickable contents for quick navigation.
+
 Django (web applications), NumPy (numerical arrays for analysis), and TensorFlow (machine learning) are examples of later applications. They are not dependencies of this course.
 
 For detailed instructions, see the [project documentation](docs/documentation.docx).
@@ -10,7 +12,9 @@ For detailed instructions, see the [project documentation](docs/documentation.do
 
 ### Run in Google Colab
 
-Click an **Open in Colab** button in the lessons table to run the combined notebook in your browser, then use its contents list to choose a lesson. No local installation is needed. Sign in to Google if prompted, then choose **File → Save a copy in Drive** to keep your notebook work. Run cells in order using **Shift+Enter**, or choose **Runtime → Run all**.
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb)
+
+Open the notebook using the button above, then use its **Contents** links to choose a lesson. No local installation is needed. Sign in to Google if prompted, then choose **File → Save a copy in Drive** to keep your notebook work. Run cells in order using **Shift+Enter**, or choose **Runtime → Run all**.
 
 Lesson 06 automatically **creates its fictional sample data when no local copy exists**. It does not fetch data from GitHub, request uploads, or mount Google Drive. Existing CSV data are preserved. Reports are replaced on repeat runs.
 
@@ -50,7 +54,7 @@ If PowerShell blocks activation, use the environment's executable directly, with
 .\.venv\Scripts\python.exe -m jupyter lab
 ```
 
-In JupyterLab open `notebooks/python_foundations.ipynb`, use its contents links to choose a lesson, and start with lesson 01, and press **Shift+Enter** to run each cell. Each lesson section also works independently; run its cells in order. To reset notebook state, restart the kernel and run all cells from the beginning. Standard-library lesson code needs no package installation in Colab. `requirements.txt` installs local notebook tools.
+In JupyterLab, open `notebooks/python_foundations.ipynb` and use its **Contents** links to choose a lesson. Start with lesson 01 for the complete course and press **Shift+Enter** to run each cell. Each lesson section also works independently; run its cells in order. To reset notebook state, restart the kernel and run all cells from the beginning. Standard-library lesson code needs no package installation in Colab. `requirements.txt` installs local notebook tools.
 
 ### Run the complete script
 
@@ -64,16 +68,16 @@ The script needs no third-party packages. You can also use `python3 examples/gra
 
 ## Lessons
 
-| Notebook | Python focus | Run online |
-| --- | --- | --- |
-| [01 — First Steps](notebooks/python_foundations.ipynb#lesson-01) | Printing, strings, comments | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb#lesson-01) |
-| [02 — Variables and Calculations](notebooks/python_foundations.ipynb#lesson-02) | Variables, types, operators, conversion | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb#lesson-02) |
-| [03 — Student Records](notebooks/python_foundations.ipynb#lesson-03) | Strings, lists, dictionaries | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb#lesson-03) |
-| [04 — Decisions and Repetition](notebooks/python_foundations.ipynb#lesson-04) | Conditions, loops, accumulation | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb#lesson-04) |
-| [05 — Reusable Functions](notebooks/python_foundations.ipynb#lesson-05) | Functions, return values, errors | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb#lesson-05) |
-| [06 — Files and Grade Analyzer](notebooks/python_foundations.ipynb#lesson-06) | Text/CSV files and complete analyzer | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb#lesson-06) |
+The [Python Foundations notebook](notebooks/python_foundations.ipynb) contains all six sections below. Use its **Contents** links to jump to a section and **Back to contents** to return. Each section includes explanations, examples, practice cells, and solutions. Run the selected section's cells in order, including its setup cells.
 
-All lesson links open sections of the combined notebook. Colab badges open the same notebook; use its contents list to jump to the lesson.
+| Section | Python focus |
+| --- | --- |
+| 01 — First Steps | Printing, strings, comments |
+| 02 — Variables and Calculations | Variables, types, operators, conversion |
+| 03 — Student Records | Strings, lists, dictionaries |
+| 04 — Decisions and Repetition | Conditions, loops, accumulation |
+| 05 — Reusable Functions | Functions, return values, errors |
+| 06 — Files and Grade Analyzer | Text/CSV files and complete analyzer |
 
 ## Expected result
 
@@ -118,7 +122,7 @@ docs/            # Project documentation
 lectures/        # LaTeX lecture deck
 notebooks/       # Combined notebook with six lesson sections
 data/            # Fictional sample data
-examples/         # Grade analyzer script
+examples/        # Grade analyzer script
 README.md
 requirements.txt
 markdown/        # Other Markdown files, including the instructor guide
