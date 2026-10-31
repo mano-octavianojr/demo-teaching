@@ -68,6 +68,8 @@ The script needs no third-party packages. You can also use `python3 examples/gra
 
 ## Lessons
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb)
+
 The [Python Foundations notebook](notebooks/python_foundations.ipynb) contains all six sections below. Use its **Contents** links to jump to a section and **Back to contents** to return. Each section includes explanations, examples, practice cells, and solutions. Run the selected section's cells in order, including its setup cells.
 
 | Section | Python focus |
@@ -79,9 +81,13 @@ The [Python Foundations notebook](notebooks/python_foundations.ipynb) contains a
 | 05 — Reusable Functions | Functions, return values, errors |
 | 06 — Files and Grade Analyzer | Text/CSV files and complete analyzer |
 
-## Expected result
+## Final project output
 
-The sample CSV contains Maya (88), Luis (72), Ari (95), and Bea (75). Both lesson 06 and the script produce:
+The grade report below is the **final project output of the course**, created in **lesson 06** by combining the skills practiced in lessons 01–05: values, collections, decisions, loops, and functions. Earlier lessons have their own examples and exercises; they build toward this report.
+
+Run lesson 06’s setup and analyzer cells in order to generate the report. You can also produce the same result with `python examples/grade_analyzer.py`.
+
+Using the sample CSV with Maya (88), Luis (72), Ari (95), and Bea (75), the final report is:
 
 ```text
 Students: 4
