@@ -13,16 +13,16 @@
 \setbeamercolor{frametitle}{fg=Forest}
 \setbeamercolor{alerted text}{fg=Forest}
 \setbeamertemplate{navigation symbols}{}
-% DLSU CCS branding. Keep the PNG beside this source when sharing.
+% DLSU CCS branding. Keep the sibling template/ folder when sharing this source.
 \setbeamertemplate{footline}{%
   \leavevmode\hbox to \paperwidth{%
     \hspace{5mm}%
-    \raisebox{-1mm}{\includegraphics[height=5mm]{DLSU-CCS-Logo-Clear.png}}%
+    \raisebox{-1mm}{\includegraphics[height=5mm]{../template/DLSU-CCS-Logo-Clear.png}}%
     \hspace{3mm}\scriptsize DLSU College of Computer Studies%
     \hfill Python Foundations\quad\insertframenumber/\inserttotalframenumber\hspace{5mm}%
   }\vspace{2mm}%
 }
-\titlegraphic{\includegraphics[height=13mm]{DLSU-CCS-Logo-Clear.png}}
+\titlegraphic{\includegraphics[height=13mm]{../template/DLSU-CCS-Logo-Clear.png}}
 \institute{De La Salle University\\College of Computer Studies}
 \setbeamersize{text margin left=9mm,text margin right=9mm}
 \setbeamerfont{frametitle}{size=\LARGE,series=\bfseries}
@@ -510,7 +510,7 @@ output_dir.mkdir(parents=True, exist_ok=True)
 report_path = output_dir / "grade_summary.txt"
 \end{lstlisting}
 \par A relative path starts from the current working directory.
-\note{Our reusable code computes a report, but variables disappear when the session ends. A file preserves the result. 1:00. Explain import and Path as a standard-library tool. Slash joins paths across operating systems. Notebook setup resolves root versus notebooks directory. Script anchors paths beside its own file. Short demo: 25 seconds.}
+\note{Our reusable code computes a report, but variables disappear when the session ends. A file preserves the result. 1:00. Explain import and Path as a standard-library tool. Slash joins paths across operating systems. Notebook setup resolves root versus notebooks directory. Script resolves repository paths from its own file. Short demo: 25 seconds.}
 \end{frame}
 \begin{frame}[fragile]{Writing a text file}
 \begin{lstlisting}
@@ -575,7 +575,7 @@ with csv_path.open("r", newline="", encoding="utf-8") as file:
 \item \texttt{write\_report}: save a readable result.
 \end{itemize}
 
-\note{Connect the project before showing helper calls: read records, summarize them, then write a report. These helper names refer to the complete notebook implementation. 0:40. Run lesson 06 end to end before class. During teaching show the final execution cell. Local equivalent is python grade\_analyzer.py. Short demo: 25 seconds to connect the small mean-file example to the completed project.}
+\note{Connect the project before showing helper calls: read records, summarize them, then write a report. These helper names refer to the complete notebook implementation. 0:40. Run lesson 06 end to end before class. During teaching show the final execution cell. Local equivalent is python examples/grade\_analyzer.py. Short demo: 25 seconds to connect the small mean-file example to the completed project.}
 \end{frame}
 \begin{frame}[fragile]{The saved summary}
 \begin{lstlisting}

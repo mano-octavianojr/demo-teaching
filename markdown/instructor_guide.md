@@ -156,7 +156,7 @@ Combine the two tools we just learned: repeat over records, then choose names us
 
 ## 39. Paths locate files
 
-Our reusable code computes a report, but variables disappear when the session ends. A file preserves the result. 1:00. Explain import and Path as a standard-library tool. Slash joins paths across operating systems. Notebook setup resolves root versus notebooks directory. Script anchors paths beside its own file. Short demo: 25 seconds.
+Our reusable code computes a report, but variables disappear when the session ends. A file preserves the result. 1:00. Explain import and Path as a standard-library tool. Slash joins paths across operating systems. Notebook setup resolves root versus notebooks directory. Script resolves repository paths from its own file. Short demo: 25 seconds.
 
 ## 40. Writing a text file
 
@@ -176,7 +176,7 @@ We have saved and reopened text. Now move the original student records into a st
 
 ## 44. The complete grade analyzer
 
-Connect the project before showing helper calls: read records, summarize them, then write a report. These helper names refer to the complete notebook implementation. 0:40. Run lesson 06 end to end before class. During teaching show the final execution cell. Local equivalent is python grade_analyzer.py. Short demo: 25 seconds to connect the small mean-file example to the completed project.
+Connect the project before showing helper calls: read records, summarize them, then write a report. These helper names refer to the complete notebook implementation. 0:40. Run lesson 06 end to end before class. During teaching show the final execution cell. Local equivalent is python examples/grade_analyzer.py. Short demo: 25 seconds to connect the small mean-file example to the completed project.
 
 ## 45. The saved summary
 
@@ -232,8 +232,8 @@ with report_path.open("r", encoding="utf-8") as file:
 
 ## Before class
 
-Open the chosen notebook, run all cells once, and locate the generated report. Reset the session and clear outputs for learner predictions. Keep a copy of the expected report available in README. Check display size and use a timer. Offer Colab as the setup path when students have no local installation.
+Open `notebooks/python_foundations.ipynb`, choose the lesson from its contents list, run that section’s cells once, and locate the generated report. Reset the session and clear outputs for learner predictions. Keep a copy of the expected report available in README. Check display size and use a timer. Offer Colab as the setup path when students have no local installation.
 
 ## Notes in Beamer
 
-`presentation.tex` hides notes in the default student view. Replace `\setbeameroption{hide notes}` with `\setbeameroption{show notes on second screen=right}` for speaker notes, or `\setbeameroption{show only notes}` for a notes document. Keep exactly one of these options active.
+`lectures/presentation.tex` hides notes in the default student view. Replace `\setbeameroption{hide notes}` with `\setbeameroption{show notes on second screen=right}` for speaker notes, or `\setbeameroption{show only notes}` for a notes document. Keep exactly one of these options active.

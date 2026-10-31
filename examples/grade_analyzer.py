@@ -64,8 +64,8 @@ def write_report(path, report):
 
 
 def main():
-    # Script paths are relative to this file, even from another working folder.
-    base = Path(__file__).resolve().parent
+    # Resolve the repository root from this file, even from another working folder.
+    base = Path(__file__).resolve().parent.parent
     csv_path = base / "data" / "grades.csv"
     report_path = base / "outputs" / "grade_summary.txt"
     ensure_sample_data(csv_path)
