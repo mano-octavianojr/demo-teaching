@@ -6,7 +6,7 @@ All six lessons are sections of one [Python Foundations notebook](notebooks/pyth
 
 Django (web applications), NumPy (numerical arrays for analysis), and TensorFlow (machine learning) are examples of later applications. They are not dependencies of this course.
 
-For detailed instructions, see the [project documentation](docs/documentation.docx).
+For learners, see the [student guide (Word)](docs/documentation.docx) or its [online text version](markdown/documentation.md). For teaching notes and delivery routes, see the [instructor guide](markdown/instructor_guide.md).
 
 ## How to access
 
@@ -14,7 +14,7 @@ For detailed instructions, see the [project documentation](docs/documentation.do
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb)
 
-Open the notebook using the button above, then use its **Contents** links to choose a lesson. No local installation is needed. Sign in to Google if prompted, then choose **File → Save a copy in Drive** to keep your notebook work. Run cells in order using **Shift+Enter**, or choose **Runtime → Run all**.
+Open the notebook using the button above, then use its **Contents** links to choose a lesson. No local installation is needed. Sign in to Google if prompted, then choose **File → Save a copy in Drive** to keep your notebook work. Run cells in order using **Shift+Enter**. Use **Runtime → Run all** only when you want to execute the entire notebook, including the provided solutions.
 
 Lesson 06 automatically **creates its fictional sample data when no local copy exists**. It does not fetch data from GitHub, request uploads, or mount Google Drive. Existing CSV data are preserved. Reports are replaced on repeat runs.
 
@@ -56,7 +56,9 @@ If PowerShell blocks activation, use the environment's executable directly, with
 
 In JupyterLab, open `notebooks/python_foundations.ipynb` and use its **Contents** links to choose a lesson. Start with lesson 01 for the complete course and press **Shift+Enter** to run each cell. Each lesson section also works independently; run its cells in order. To reset notebook state, restart the kernel and run all cells from the beginning. Standard-library lesson code needs no package installation in Colab. `requirements.txt` installs local notebook tools.
 
-### Run the complete script
+### Run the example program
+
+The grade analyzer is the completed example program, not an answer checker. It reads fictional grades and writes a report; it does not assess notebook answers.
 
 From the project folder, using the activated environment:
 
@@ -70,7 +72,9 @@ The script needs no third-party packages. You can also use `python3 examples/gra
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mano-octavianojr/demo-teaching/blob/main/notebooks/python_foundations.ipynb)
 
-The [Python Foundations notebook](notebooks/python_foundations.ipynb) contains all six sections below. Use its **Contents** links to jump to a section and **Back to contents** to return. Each section includes explanations, examples, practice cells, and solutions. Run the selected section's cells in order, including its setup cells.
+The [Python Foundations notebook](notebooks/python_foundations.ipynb) contains all six sections below. Use its **Contents** links to jump to a section and **Back to contents** to return. Each section includes explanations, examples, practice cells, and solutions. Run the selected section's cells in order, including its setup cells. If a contents link does not jump in your notebook viewer, use its table of contents sidebar to select the lesson.
+
+Try each practice cell before reading or running its solution. Both share the same Python session, so a solution that appends to a list can repeat your own changes. Rerun the lesson's setup cell before comparing that solution.
 
 | Section | Python focus |
 | --- | --- |
@@ -106,9 +110,17 @@ CSV headers must be `name,grade`. Grades must be finite numbers from 0 to 100 an
 - `lectures/presentation.tex`: standalone 16:9 LaTeX Beamer deck, exactly 48 slides. Code uses `listings` and needs no shell escape or Python package. The DLSU CCS logo is the supplied `template/DLSU-CCS-Logo-Clear.png`, referenced by its relative path from `lectures/`.
 - `markdown/instructor_guide.md`: slide-by-slide speaking notes, timing, questions, and the 6-minute live demo script. Setup happens before the timed lesson.
 
-The source remains open in Codex's built-in LaTeX editor. Its current single-file compiler cannot load the separate logo PNG, so the branded deck requires a project-capable LaTeX compiler (for example an existing local TeX setup or Overleaf) with both `lectures/` and `template/` preserving their relative layout. The student view hides notes by default. The instructor guide explains how to enable notes. With an existing local LaTeX installation, run `cd lectures`, then compile twice using `pdflatex presentation.tex` or use `latexmk -pdf presentation.tex`. Do not run these commands inside a Python cell.
+Use a project-capable LaTeX compiler (an existing local TeX installation or Overleaf) with both `lectures/` and `template/` preserving their relative layout. The student view hides speaker notes by default; the instructor guide explains how to enable them. From the project folder, compile locally with:
 
-| Slides | Content | Suggested time |
+```bash
+cd lectures
+pdflatex presentation.tex
+pdflatex presentation.tex
+```
+
+Alternatively, run `latexmk -pdf presentation.tex` from `lectures/`. These are terminal commands, not Python code. The PDF is written beside the source by these commands. For Overleaf, upload both folders and select `lectures/presentation.tex` as the main document. Full lesson code is in the notebook; slide snippets may rely on earlier definitions and are not independent scripts.
+
+| Slides | Content | Approximate time |
 | --- | --- | --- |
 | 1–6 | The report task, Python background, and execution | 4 min |
 | 7–14 | One student: output, values, calculations, and errors | 9 min |
@@ -118,7 +130,7 @@ The source remains open in Codex's built-in LaTeX editor. Its current single-fil
 | 39–43 | Keeping results: text files and CSV input | 5 min |
 | 44–48 | Complete analyzer, saved report, practice, and applications | 4 min |
 
-Slide notes target approximately 42 minutes. Running Python setup stays in this README rather than the slides. For 45 minutes add three minutes of guided practice. For 30 minutes summarize designated reference slides. The short route has a separate six-minute schedule in the instructor guide. Timing is a delivery target, not a recorded classroom rehearsal.
+Slide notes target approximately 42 minutes for the presentation and brief demonstrations; completing every notebook exercise takes additional time. Running Python setup stays in this README rather than the slides. For 45 minutes add three minutes of guided practice. For 30 minutes summarize designated reference slides. The short route has a separate six-minute schedule in the instructor guide. Timing is a delivery target, not a recorded classroom rehearsal.
 
 ## Repository
 

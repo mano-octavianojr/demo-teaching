@@ -48,7 +48,7 @@ If PowerShell blocks activation, use the environment's executable directly:
 .\.venv\Scripts\python.exe -m jupyter lab
 ```
 
-Open `notebooks/python_foundations.ipynb` in JupyterLab and use the clickable contents list to choose a lesson. Begin with lesson 01 for the full course. Each lesson section also works independently; run its cells in order. Restart the kernel and run all cells from the beginning to reset its state.
+Open `notebooks/python_foundations.ipynb` in JupyterLab and use the clickable contents list to choose a lesson. Begin with lesson 01 for the full course. Each lesson section also works independently; run its cells in order. To reset Python state, restart the kernel and rerun cells in order. Generated files remain until you remove them or the runtime is reset.
 
 `requirements.txt` supplies local notebook tools. Django, NumPy, and TensorFlow are examples of future applications and are not required for this course.
 
@@ -67,7 +67,7 @@ Run cells in order within the lesson you select. The lessons build toward repres
 
 ## Work through a lesson
 
-Each lesson includes explanations, runnable examples, expected results, practice cells, solutions, and an exit check.
+Each lesson includes explanations, runnable examples, expected results, practice cells, solutions, and an exit check. If a contents link does not jump in your viewer, use the table of contents sidebar to choose the lesson.
 
 1. Read the explanation and predict what the next code cell will display.
 2. Run the cell with **Shift+Enter** and compare the result with the expected output.
@@ -75,11 +75,11 @@ Each lesson includes explanations, runnable examples, expected results, practice
 4. Use the solution to check your approach, then answer the exit check in your own words.
 5. Select **Back to contents** to choose another lesson.
 
-You can start any lesson independently, but run that lesson's cells in order so its variables and functions are available. A notebook remembers values from earlier executions. To check your work from a clean state, restart the kernel or runtime and run the cells again in order. **Run all** also executes the provided solution cells.
+You can start any lesson independently, but run that lesson's cells in order so its variables and functions are available. A notebook remembers values from earlier executions. To check your work from a clean state, restart the kernel or runtime and run the cells again in order. **Run all** also executes the provided solution cells. In lesson 03, rerun the dictionary setup cell before comparing your answer with the append solution. Otherwise, both answers can add Ari to the same list and change the expected count.
 
 ## Build your grade report
 
-Lesson 06 combines the earlier skills into a complete analyzer. It reads student records, calculates a class average, identifies passing students, and writes a text report. Run the lesson from its setup cell through its analysis and writing cells.
+The final project output is the class report created in lesson 06 by combining the skills from lessons 01–05. The analyzer is an example program that generates this report; it does not check or grade your exercise answers. It reads student records, calculates a class average, identifies passing students, and writes a text report. Run the lesson from its setup cell through its analysis and writing cells.
 
 The notebook creates fictional sample data if no local copy exists. You do not need to upload data or mount Google Drive. Existing CSV data are preserved, and generated reports are replaced when you run the same writing steps again.
 

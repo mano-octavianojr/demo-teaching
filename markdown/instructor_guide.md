@@ -2,13 +2,23 @@
 
 48 slides. Approximately 42 minutes, excluding setup. Follow one report task: represent four students, process their grades, organize reusable steps, and save results.
 
+## Using the materials
+
+Students use one notebook, `notebooks/python_foundations.ipynb`, with six lesson sections and a contents list. The Word student guide is `docs/documentation.docx`; its readable source is `markdown/documentation.md`. Use the README for setup commands and the Colab launch button.
+
+The grade analyzer is the final example program, not an answer checker. Lessons 01–05 introduce the skills; lesson 06 combines them into the saved class report. Expected values assume the bundled fictional CSV has not been edited. A passing threshold of 75 is illustrative.
+
+Use the notebook for runnable demonstrations. Slide snippets are shortened teaching examples and may require earlier definitions. Run the selected lesson's setup cells before demonstrating a later cell. At slide 13, the conversion-error cell in lesson 05 can run by itself because it does not depend on that lesson's function definitions.
+
+Ask students to try practice cells before viewing solutions. Run all executes the solutions too. A student's list mutation and the supplied solution share state: rerun the setup cell before comparing an append exercise, rather than appending the same student again.
+
 ## 01. Python Foundations
 
 0:30. Introduce the fictional grade analyzer: four records become a saved class summary. Ask who has used a spreadsheet formula. Connect instructions to familiar calculations. Short demo: begin here for 20 seconds.
 
 ## 02. Our task: a class grade report
 
-Begin with the result students will build. Ask what information the report needs. We will represent the data, process it, organize the steps and save the result. 0:40. These are introductory outcomes, not mastery claims. Ask students to name one result they want a program to calculate. Explain that practice notebooks accompany the lesson.
+Begin with the result students will build. Ask what information the report needs. We will represent the data, process it, organize the steps and save the result. 0:40. These are introductory outcomes, not mastery claims. Ask students to name one result they want a program to calculate. Explain that one notebook contains six practice lesson sections.
 
 ## 03. Python and a program
 
@@ -16,15 +26,15 @@ Begin with the result students will build. Ask what information the report needs
 
 ## 04. A brief history of Python
 
-0:40. Explain that Python began as a practical scripting language and grew into a general-purpose language. Avoid a long version timeline. Source: \url{https://docs.python.org/3/faq/general.html}.
+0:40. Explain that Python began as a practical scripting language and grew into a general-purpose language. Avoid a long version timeline. Source: https://docs.python.org/3/faq/general.html.
 
 ## 05. Why choose Python?
 
-0:40. Present these as reasons to choose Python for this lesson and rapid prototyping, rather than a claim it is best for every task. Mention that libraries may perform expensive operations using compiled code. Sources: \url{https://www.python.org/doc/essays/blurb/} and \url{https://docs.python.org/3/glossary.html\#term-interpreted}.
+0:40. Present these as reasons to choose Python for this lesson and rapid prototyping, rather than a claim it is best for every task. Mention that libraries may perform expensive operations using compiled code. Sources: https://www.python.org/doc/essays/blurb/ and https://docs.python.org/3/glossary.html#term-interpreted.
 
 ## 06. Interpreter and compiler
 
-Bridge to the first code: we now know what executes our instructions. The next slide shows our first visible result. 0:50. Explain translation versus execution without claiming that Python never compiles or simply executes source line by line. CPython is the standard Python implementation. Bytecode is an intermediate instruction format, not a native machine-code executable. Ask whether Python can use both compilation and interpretation. Answer yes. Source: \url{https://docs.python.org/3/glossary.html\#term-interpreted}.
+Bridge to the first code: we now know what executes our instructions. The next slide shows our first visible result. 0:50. Explain translation versus execution without claiming that Python never compiles or simply executes source line by line. CPython is the standard Python implementation. Bytecode is an intermediate instruction format, not a native machine-code executable. Ask whether Python can use both compilation and interpretation. Answer yes. Source: https://docs.python.org/3/glossary.html#term-interpreted.
 
 ## 07. Our first output
 
@@ -120,7 +130,7 @@ One condition handles one grade. A loop lets us visit every grade without copyin
 
 ## 30. Collecting passing names
 
-Combine the two tools we just learned: repeat over records, then choose names using a condition. The list contains all four original students. 1:30. Demonstrate nested indentation. With all four bundled records, names are Maya, Ari, Bea. Ask whether Bea passes at exactly 75. Notebook 04 includes all four records.
+Combine the two tools we just learned: repeat over records, then choose names using a condition. The list contains all four original students. 1:30. Demonstrate nested indentation. With all four bundled records, names are Maya, Ari, Bea. Ask whether Bea passes at exactly 75. Lesson 04 in the combined notebook includes all four records.
 
 ## 31. Functions organize repeated work
 
@@ -176,7 +186,7 @@ We have saved and reopened text. Now move the original student records into a st
 
 ## 44. The complete grade analyzer
 
-Connect the project before showing helper calls: read records, summarize them, then write a report. These helper names refer to the complete notebook implementation. 0:40. Run lesson 06 end to end before class. During teaching show the final execution cell. Local equivalent is python examples/grade_analyzer.py. Short demo: 25 seconds to connect the small mean-file example to the completed project.
+Connect the project before showing helper calls: read records, summarize them, then write a report. These helper names refer to the complete notebook implementation. 0:40. Run lesson 06 end to end before class. During teaching show the final execution cell. Local equivalent is python examples/grade_analyzer.py. Short demo: 20 seconds to connect the small mean-file example to the completed project.
 
 ## 45. The saved summary
 
@@ -184,7 +194,7 @@ Connect the project before showing helper calls: read records, summarize them, t
 
 ## 46. Practice: a different threshold
 
-0:40. Answer: Ari only, average remains 82.50. The solution is separated in lesson 06. For 45 minutes allocate an additional five minutes to this exercise. Ask why changing the threshold does not change the class average.
+0:40. Answer: Ari only, average remains 82.50. The solution is separated in lesson 06. For 45 minutes allocate an additional three minutes to this exercise. Ask why changing the threshold does not change the class average.
 
 ## 47. Where Python can lead
 
@@ -196,11 +206,11 @@ The saved report completes our original task. Relate the same skills to future t
 
 ## Delivery routes
 
-**Full lesson:** approximately 42 minutes. Add three minutes of paired practice on slide 46 for 45 minutes.
+**Full lesson:** approximately 42 minutes for the presentation and brief demonstrations, excluding setup and completion of every notebook exercise. The slide-note allocations total 41 minutes 50 seconds. Allow additional time if students work through all practice cells during class. Add three minutes of paired practice on slide 46 for 45 minutes.
 
 **30 minutes:** summarize history, interpreter details, secondary operators, and errors. Walk quickly through the four loop traces. Keep the four function patterns, leaving defaults and empty-input handling as reference. Demonstrate files rather than retyping. Assign the final exercise as follow-up.
 
-**Six-minute demo:** pre-open a scratch cell and use slide 1 (20s), slide 9 (30s), slide 15 (30s), slide 22 (40s), slide 28 (45s), slide 35 (75s), slide 39 (25s), slide 40 (35s), slide 41 (25s), slide 44 (20s), slide 48 (15s). On the function slide, allow 45 seconds for the definition and 30 seconds for the call. Total 360 seconds.
+**Six-minute demo:** pre-open a scratch cell and use slide 1 (20s), slide 9 (30s), slide 15 (30s), slide 22 (40s), slide 28 (45s), slide 35 (75s), slide 39 (25s), slide 40 (35s), slide 41 (25s), slide 44 (20s), slide 48 (15s). On the function slide, allow 45 seconds for the definition and 30 seconds for the call. Total 360 seconds. This short route demonstrates a mean-only file, `outputs/demo_mean.txt`; it does not build the complete CSV analyzer or the final class report. Show the prepared lesson 06 report when connecting to the final project.
 
 ```python
 from pathlib import Path
@@ -223,7 +233,7 @@ def mean_grade(grades):
 average = mean_grade(grades)
 output_dir = Path("outputs")
 output_dir.mkdir(parents=True, exist_ok=True)
-report_path = output_dir / "grade_summary.txt"
+report_path = output_dir / "demo_mean.txt"
 with report_path.open("w", encoding="utf-8") as file:
     file.write(f"Class average: {average:.2f}\n")
 with report_path.open("r", encoding="utf-8") as file:
@@ -232,7 +242,9 @@ with report_path.open("r", encoding="utf-8") as file:
 
 ## Before class
 
-Open `notebooks/python_foundations.ipynb`, choose the lesson from its contents list, run that section’s cells once, and locate the generated report. Reset the session and clear outputs for learner predictions. Keep a copy of the expected report available in README. Check display size and use a timer. Offer Colab as the setup path when students have no local installation.
+Open `notebooks/python_foundations.ipynb` and run the full notebook once. Check the contents navigation and locate the default and high-threshold reports produced by lesson 06. Reset the session and clear outputs for learner predictions. Keep a copy of the expected report available in README. Check display size and use a timer. Offer Colab as the setup path when students have no local installation.
+
+Compile and check the presentation using the README instructions. Keep the logo in `template/` when sharing the source project.
 
 ## Notes in Beamer
 
