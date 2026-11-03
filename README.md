@@ -30,6 +30,11 @@ Slide 2 explains that GenAI is allowed as a learning assistant, but students mus
 
 Every file is a complete HTML document. Open any one directly; none depends on an earlier example. The image example includes its required asset in the adjacent `assets` folder.
 
+Each independent example includes a short **Quick discussion** and a **Try it**
+prompt visible in the browser. See the [examples guide](examples/README.md) for
+the learning sequence and portfolio walkthrough. The introductory reference is
+[W3Schools: HTML Introduction](https://www.w3schools.com/html/html_intro.asp).
+
 | File | Focus |
 | --- | --- |
 | [01_document_structure.html](examples/independent/01_document_structure.html) | Document structure |

@@ -41,7 +41,8 @@
 \date{}
 \begin{document}
 % Slide 01: CORE: 35 seconds
-\begin{frame}[plain,fragile]
+\begin{frame}[plain]
+\relax
 {\usebeamerfont{title}\color{Forest}\LARGE\bfseries HTML5 Foundations\par}
 \medskip
 {\large Building a student portfolio\par}
@@ -67,7 +68,7 @@
 \begin{frame}[fragile]{A webpage in a browser}
 \begin{itemize}
 \item An HTML file contains text that describes page content.
-\item The browser reads the file and displays the page.
+\item The browser interprets the tags and displays their content; the tags themselves are not shown.
 \item Changing the saved file and refreshing changes what you see.
 \end{itemize}
 
@@ -79,7 +80,9 @@
 <h1>Maya Santos</h1>
 <p>Computing student and curious learner.</p>
 \end{lstlisting}
-\par\medskip HTML means HyperText Markup Language. It marks the roles of content.
+\par\medskip \textbf{Quick discussion:} HTML means HyperText Markup Language.
+It describes webpage structure: \texttt{h1} marks a main heading and \texttt{p} a paragraph.
+\par\smallskip {\small Introductory reference: \href{https://www.w3schools.com/html/html_intro.asp}{W3Schools: HTML Introduction}.}
 
 \note{CORE: 40 seconds. Read h1 as a main heading and p as a paragraph. Ask which text looks like a heading. Describe markup as adding meaningful labels, rather than writing calculations or decision logic. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax}.}
 \end{frame}
@@ -125,6 +128,9 @@
 \item \texttt{I am learning HTML.} is its content.
 \item \texttt{</p>} ends the paragraph.
 \end{itemize}
+\par\smallskip \textbf{Quick discussion:} The tags and content together form
+one element. Change the text, save, and refresh to see the result.
+
 
 \note{CORE: 50 seconds. An element includes the tags and content. Point at the slash in the closing tag. The next supporting slide explains the exception for void elements. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax}.}
 \end{frame}
@@ -176,7 +182,10 @@
 </body>
 </html>
 \end{lstlisting}
-\par\medskip The head describes the page. The body contains its page content.
+\par\smallskip {\small \textbf{Quick discussion:} The doctype selects standards mode;
+\texttt{html} is the root and \texttt{lang} identifies its language.
+\texttt{head} holds metadata; \texttt{body} holds displayed content.
+The title appears in the tab; \texttt{h1} appears on the page.}
 
 \note{CORE: 80 seconds. Allow 80 seconds on the core route. Explain doctype as standards mode, html as root, lang as the document language, head as metadata and body as displayed content. The title names the browser tab, while h1 names the page content. Full files include charset and viewport metadata shown on the next supporting slide. HTML5 is common teaching terminology; HTML now develops as a Living Standard. Source: \url{https://html.spec.whatwg.org/multipage/}.}
 \end{frame}
@@ -203,7 +212,9 @@
 <h2>Projects</h2>
 <h3>Campus study guide</h3>
 \end{lstlisting}
-\par\medskip Choose heading levels for the content hierarchy, rather than text size.
+\par\medskip \textbf{Quick discussion:} HTML has six heading levels,
+\texttt{h1}--\texttt{h6}. Here the page title contains a Projects topic,
+which contains a project title. Choose levels for hierarchy, rather than text size.
 
 \note{CORE: 55 seconds. Use one main h1 in this lesson. Projects is a section, and the project title nests below it. Ask why choosing h3 just for a smaller font is unhelpful. CSS will control size next week. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax}.}
 \end{frame}
@@ -213,7 +224,9 @@
 <p>I am Maya, a computing student.</p>
 <p>I enjoy making useful webpages.</p>
 \end{lstlisting}
-\par\medskip Each paragraph expresses a related idea. Source-code line breaks do not create new paragraphs.
+\par\medskip \textbf{Quick discussion:} Each \texttt{p} groups a related idea.
+Source-code line breaks do not create new paragraphs; use another \texttt{p}.
+\par\smallskip \textbf{Try it:} Add a paragraph about another interest, then refresh.
 
 \note{OPTIONAL: about 60 seconds; excluded from the 20-minute core route. Optional practice. Explain ordinary whitespace generally collapses in HTML rendering. Use p elements instead of repeated br tags to divide paragraphs. HTML source can wrap across lines for readability. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax}.}
 \end{frame}
@@ -227,6 +240,9 @@
 \item \texttt{strong} marks importance.
 \item \texttt{em} marks stress emphasis.
 \end{itemize}
+\par\smallskip \textbf{Quick discussion:} These elements add meaning inside
+a paragraph. Close each inner element before closing \texttt{p}.
+
 
 \note{OPTIONAL: about 60 seconds; excluded from the 20-minute core route. Optional enrichment. Browsers usually render these as bold and italic, but the meaning matters. Avoid teaching strong and em as mere visual formatting commands. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax}.}
 \end{frame}
@@ -238,7 +254,10 @@
   <li>Checking links</li>
 </ul>
 \end{lstlisting}
-\par\medskip \texttt{ul} is unordered. Use \texttt{ol} for an ordered sequence. Each item uses \texttt{li}.
+\par\medskip \textbf{Quick discussion:} Use \texttt{ul} when order does not
+matter, as with skills. Use \texttt{ol} for a sequence, such as edit, save,
+and refresh. Both contain \texttt{li} items.
+\par\smallskip \textbf{Try it:} Add another skill inside this list.
 
 \note{CORE: 50 seconds. Use the portfolio skills as the example. Ask when order matters: editing, saving and refreshing are ordered steps. The independent list example demonstrates both ul and ol. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax}.}
 \end{frame}
@@ -247,7 +266,9 @@
 \begin{lstlisting}
 <a href="index.html">Read my portfolio</a>
 \end{lstlisting}
-\par\medskip The href gives the destination. The link text should explain where it leads.
+\par\medskip \textbf{Quick discussion:} \texttt{a} creates a link;
+\texttt{href} gives its destination. The text between the tags is the visible label.
+A destination can be a local file, a full URL, or a same-page fragment.
 
 \note{CORE: 40 seconds. This relative link points to a file in the same folder. A full URL can point to another website. Tell students that linking to a page is not the same as embedding it. Avoid opening external sites during this offline lesson. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax}.}
 \end{frame}
@@ -259,7 +280,10 @@
   <h2>Projects</h2>
 </section>
 \end{lstlisting}
-\par\medskip The fragment after \# must match a unique ID in the page.
+\par\medskip \textbf{Quick discussion:} \texttt{href="\#projects"} targets
+\texttt{id="projects"}. Include \# in the link, but not in the ID.
+Each ID must be unique.
+\par\smallskip \textbf{Try it:} Follow the link with Tab and Enter.
 
 \note{CORE: 50 seconds. Trace projects in both places. ID values should be unique; the href includes the hash while the id value does not. This is the exact pattern used in the assignment. Navigation can work even without CSS or JavaScript. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax}.}
 \end{frame}
@@ -271,9 +295,12 @@
      alt="DLSU and CCS emblems">
 \end{lstlisting}
 \begin{itemize}
-\item \texttt{src} locates the image file.
-\item \texttt{alt} describes its meaning when the image cannot be seen.
+\item \texttt{src} starts from this HTML file and enters \texttt{assets}.
+\item \texttt{alt} provides a text alternative for this meaningful image.
 \end{itemize}
+\par\smallskip \textbf{Quick discussion:} Dimensions are in pixels.
+\texttt{img} is a void element: it has no content or closing tag.
+
 
 \note{CORE: 50 seconds. The local image is supplied and makes the folder work offline. Explain that decorative images use empty alt, but this meaningful institutional mark has descriptive text. The example files use the fuller official names. Image dimensions preserve the image aspect ratio. Source: \url{https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img}.}
 \end{frame}
@@ -284,6 +311,10 @@
 \item \texttt{header}, \texttt{nav}, \texttt{main}, and \texttt{footer} identify page regions.
 \item Meaningful structure helps readers and assistive technology.
 \end{itemize}
+\par\smallskip \textbf{Quick discussion:} A section groups a topic; an article
+is a self-contained item within it. Semantic roles organize meaning;
+CSS controls visual layout.
+
 
 \note{CORE: 45 seconds. We already know how tags nest. Now choose the right tags for each part of the portfolio. Semantics alone do not produce a layout or guarantee accessibility. CSS handles presentation. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Structuring_documents}.}
 \end{frame}
@@ -295,7 +326,9 @@
   <p>Computing student and curious learner.</p>
 </header>
 \end{lstlisting}
-\par\medskip A page header introduces the portfolio and its owner.
+\par\medskip \textbf{Quick discussion:} This page-level \texttt{header}
+introduces the portfolio and its owner. It differs from \texttt{head},
+which holds document metadata rather than visible introductory content.
 
 \note{CORE: 35 seconds. Use the portfolio introduction students saw at the start. Header can also introduce a section or article; this example is the page-level header. It is different from head, which contains metadata. Source: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Structuring_documents}.}
 \end{frame}
