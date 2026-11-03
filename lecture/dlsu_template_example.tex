@@ -1,0 +1,46 @@
+\documentclass[aspectratio=169,12pt]{beamer}
+% For a study PDF with quiz answers visible, add handout to the class options.
+\usepackage{nulifeinsurance}
+\NUSetup{Data Science for Life Insurance}{Week 2}{nu-wordmark.png}
+\title{Business Understanding and Requirements}
+\subtitle{Life Insurance Policy Retention\\Understanding and Anticipating Lapse}
+\author{Instructor Name}
+\institute{National University}
+\date{}
+\begin{document}
+\begin{frame}[plain]\titlepage\end{frame}
+\begin{frame}{The business situation}
+\begin{insuranceexample}
+Illustrative capacity: 100 policy reviews each month. Confirm customer-contact capacity separately.
+Which active policies should receive support, and what evidence is needed?
+\end{insuranceexample}
+\begin{conceptblock}
+Begin with the decision, intended user, available action, and constraints.
+\end{conceptblock}
+\end{frame}
+\begin{frame}{Where are we in the life cycle?}
+\NULifecycle{\textbf{Business understanding} $\rightarrow$ Data understanding
+$\rightarrow$ Preparation $\rightarrow$ Analysis and modeling
+$\rightarrow$ Evaluation $\rightarrow$ Delivery and monitoring}
+\begin{commonmistake}
+``Build a classifier'' describes a technical approach, not the business requirement.
+\end{commonmistake}
+\end{frame}
+\NUQuickQuiz{Which statement is a business requirement?}
+{\begin{enumerate}
+\item Use a decision tree.
+\item Prioritize 100 active policies for monthly retention review.
+\end{enumerate}}
+{Statement 2 specifies a decision and an operational constraint.
+The model is an implementation choice.}
+\begin{frame}{Your project mission}
+\begin{projecttask}
+Interview the retention manager and write a one-page project charter.
+\end{projecttask}
+\begin{itemize}
+\item Define lapse and distinguish other policy exits.
+\item Agree on the prediction horizon and outreach capacity.
+\item Record success criteria, limitations, and unanswered questions.
+\end{itemize}
+\end{frame}
+\end{document}

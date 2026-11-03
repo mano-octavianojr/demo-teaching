@@ -1,0 +1,518 @@
+\documentclass[aspectratio=169,12pt]{beamer}
+\usepackage{dlsu-beamer}
+\usepackage{tikz}
+\DLSUSetup{HTML Foundations}{30-minute discussion}{DLSU-CCS-Logo-Clear.png}
+\title{HTML Foundations}
+\subtitle{}
+\author{Manolito Octaviano Jr.}
+\date{}
+% Uncomment for presenter view or a separate notes PDF:
+% \setbeameroption{show notes on second screen=right}
+% \setbeameroption{show only notes}
+\begin{document}
+
+% Slide 01: 30 seconds (00:00–00:30).
+\begin{frame}[plain]
+\titlepage
+\note{30 seconds (00:00--00:30). Introduce the fictional meetup and the goal of creating a readable, working page. No previous coding experience is needed. Transition: What will you be able to explain and build?}
+\end{frame}
+
+% Slide 02: 45 seconds (00:30–01:15).
+\begin{frame}{Today's learning targets}
+\begin{enumerate}
+\item Read HTML markup.
+\item Recognize the basic document structure.
+\item Choose elements for page content.
+\item Save and preview a web page.
+\end{enumerate}
+\note{45 seconds (00:30--01:15). Set expectations: understand the building blocks now, reproduce the example afterward. The goal is a small working page, not mastery of every HTML tag. Transition: What information would a visitor need?}
+\end{frame}
+
+% Slide 03: 45 seconds (01:15–02:00).
+\begin{frame}{A student organization needs your help}
+\begin{conceptblock}
+Visitors need the event name, purpose, schedule, preparation list, image, and a useful link.
+\end{conceptblock}
+\begin{workedexample}
+Plain announcement: ``Campus Web Development Meetup. Learn the basics together. Friday, 3:00 PM. Bring a laptop and notebook.''
+\end{workedexample}
+\note{45 seconds (01:15--02:00). All event details are illustrative, not an official DLSU announcement. Ask which detail students would look for first; take one brief answer. Transition: We can organize that announcement for the web.}
+\end{frame}
+
+% Slide 04: 60 seconds (02:00–03:00).
+\begin{frame}{Our destination: a readable event page}
+\centering
+\vfill
+{\color{DLSUGreen}\rule{22mm}{1.2pt}}\par
+\vspace{6mm}
+{\fontsize{48}{54}\selectfont\bfseries\color{DLSUGreen} DEMO\par}
+\vspace{6mm}
+{\color{DLSUGreen}\rule{22mm}{1.2pt}}\par
+\vfill
+
+\note{60 seconds (02:00--03:00). Point to each content role without naming every tag yet. The student version will use their own local image. Transition: First, what is HTML?}
+\end{frame}
+
+% Slide 05: 60 seconds (03:00–04:00).
+\begin{frame}[fragile]{HTML gives content structure}
+\begin{conceptblock}
+HTML means HyperText Markup Language. Markup identifies the roles of content. HTML is a markup language.
+\end{conceptblock}
+\begin{lstlisting}
+<h1>Campus Web Development Meetup</h1>
+\end{lstlisting}
+
+\note{60 seconds (03:00--04:00). Read this as ``this text is the page's main heading.'' The browser displays the text using its default heading presentation, not the angle-bracket tags. Transition: Where do appearance and interactions fit?}
+\end{frame}
+
+% Slide 06: 30 seconds (04:00–04:30).
+\begin{frame}{HTML, CSS, and JavaScript}
+\begin{conceptblock}
+HTML supplies structure and meaning; CSS controls presentation; JavaScript adds programmed behavior.
+\end{conceptblock}
+\medskip
+Today's discussion focuses only on HTML.
+\note{30 seconds (04:00--04:30). A page can display content, images, and working links without custom CSS or JavaScript. Do not introduce their syntax. Transition: Why do some tutorials call it HTML5?}
+\end{frame}
+
+% Slide 07: 60 seconds (04:30–05:30).
+\begin{frame}{HTML vs HTML5: why the name?}
+\small
+HTML is the language; HTML5 was a major evolution of it.
+\medskip
+
+\begingroup
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}p{.17\linewidth}p{.36\linewidth}p{.36\linewidth}@{}}
+\hline
+\textbf{Compare} & \textbf{Earlier HTML (HTML 4.01)} & \textbf{HTML5 / modern HTML} \\
+\hline
+Foundation & Headings, paragraphs, lists, links, images & Retains these familiar building blocks \\
+Page structure & Generic containers such as \texttt{div} & Adds meaningful elements such as \texttt{header}, \texttt{nav}, \texttt{article} \\
+Media & Audio/video commonly relied on plug-ins & Built-in \texttt{audio} and \texttt{video} elements \\
+Doctype & Longer declaration naming a document type definition & Simple \texttt{<!DOCTYPE html>} \\
+\hline
+\end{tabular}
+\endgroup
+\medskip
+
+\textbf{Today:} HTML is maintained as a continuously updated \textbf{Living Standard}. ``HTML5'' remains a familiar name for modern HTML.
+\par\smallskip
+{\scriptsize Source: \href{https://html.spec.whatwg.org/multipage/introduction.html}{WHATWG HTML Standard: introduction and history}.}
+\note{60 seconds (04:30--05:30). HTML and HTML5 are not separate competing languages. The table compares older HTML 4.01 with the changes associated with HTML5. HTML5 expanded semantic structure and native media support while retaining basic markup. Earlier HTML could still display multimedia through other mechanisms. The current WHATWG specification is the HTML Living Standard, maintained continuously rather than as a frozen numbered release. The short doctype requests standards-mode rendering; it does not select a frozen version of HTML5. The semantic and media tags are examples for context only, not additional topics to master today. We will learn modern HTML foundations. Transition: Why learn these foundations before using a framework?}
+\end{frame}
+
+% Slide 08: 30 seconds (05:30–06:00).
+\begin{frame}{Why learn HTML before frameworks?}
+\begin{enumerate}
+\item \textbf{Understand the foundation.} Bootstrap styles HTML; it does not replace HTML structure.
+\item \textbf{Choose meaningful elements.} Use headings, links, and buttons for their intended purpose.
+\item \textbf{Build accessible content.} Correct structure and image alternatives still matter when using a framework.
+\item \textbf{Debug with confidence.} Recognize missing tags, incorrect nesting, and broken links.
+\item \textbf{Adapt beyond templates.} Customize components and carry your knowledge to other tools.
+\end{enumerate}
+\medskip
+\textbf{Learn the structure first; use frameworks to build on it.}
+\note{30 seconds (05:30--06:00). Frameworks are useful tools built on web fundamentals. Bootstrap provides styling and components, but developers still choose appropriate HTML and supply accessible content. Mention the five benefits briefly; do not introduce framework syntax. Transition: Let's inspect the smallest HTML building block.}
+\end{frame}
+
+% Slide 09: 60 seconds (06:00–07:00).
+\begin{frame}[fragile]{Anatomy of an element}
+\begin{conceptblock}
+An element usually combines an opening tag, content, and a closing tag. A tag is part of an element.
+\end{conceptblock}
+\begin{lstlisting}
+<p>Learn the basics together.</p>
+\end{lstlisting}
+
+\small Opening tag + content + closing tag = element.
+\note{60 seconds (06:00--07:00). Label \texttt{<p>}, the text, and \texttt{</p>} separately. The slash marks the closing tag. The complete expression is the paragraph element. Transition: What happens when we pair tags incorrectly?}
+\end{frame}
+
+% Slide 10: 60 seconds (07:00–08:00).
+\begin{frame}[fragile]{Pair tags clearly}
+\begin{commonmistake}
+A common mistake is using different tag names for the opening and closing tags. Be careful: some tags, such as \texttt{img} and \texttt{meta}, do not need an end tag.
+\end{commonmistake}
+\begin{lstlisting}
+<!-- Incorrect pair -->
+<h1>Campus Web Development Meetup</p>
+
+<!-- Correct pair -->
+<h1>Campus Web Development Meetup</h1>
+\end{lstlisting}
+
+\note{60 seconds (07:00--08:00). Explain that the gray labels are comments for the slide and are not displayed by the browser. Browsers may recover from mistakes, so visible output alone does not prove correct markup. Do not teach comments as a separate topic. Transition: Elements can also contain other elements.}
+\end{frame}
+
+% Slide 11: 50 seconds (08:00–08:50).
+\begin{frame}[fragile]{Nest elements inside one another}
+\begin{conceptblock}
+Close the inner element before the outer one. Indentation makes containment easier to read.
+\end{conceptblock}
+\begin{lstlisting}
+<p>A meetup for <strong>beginner web developers</strong>.</p>
+\end{lstlisting}
+
+\note{50 seconds (08:00--08:50). Trace paragraph $\rightarrow$ important phrase $\rightarrow$ close phrase $\rightarrow$ close paragraph. Explain only the containment now; discuss the meaning of \texttt{strong} later in the text-content discussion. Indentation supports readability; it does not define HTML nesting. Transition: Let us start building the page.}
+\end{frame}
+
+% Slide 12: 10 seconds (08:50–09:00).
+\begin{frame}{From concepts to our first page}
+\centering
+\vfill
+{\color{DLSUGreen}\rule{22mm}{1.2pt}}\par
+\vspace{6mm}
+{\fontsize{32}{38}\selectfont\bfseries\color{DLSUGreen} LET'S START\\[2mm] DEVELOPING\par}
+\vspace{6mm}
+{\color{DLSUGreen}\rule{22mm}{1.2pt}}\par
+\vspace{4mm}
+Build the document, starting with the doctype.
+\vfill
+\note{10 seconds (08:50--09:00). We understand tags and nesting. Now switch to building the campus event page step by step. Students observe during the discussion and code independently afterward. Transition: Begin with the doctype and root element.}
+\end{frame}
+
+% Slide 13: 60 seconds (09:00–10:00).
+\begin{frame}[fragile]{Declare the document and its language}
+\begin{conceptblock}
+The doctype declares modern HTML. The \texttt{html} element wraps the document. \texttt{lang="en"} identifies English for tools such as screen readers.
+\end{conceptblock}
+\begin{lstlisting}
+<!DOCTYPE html>
+<html lang="en">
+</html>
+\end{lstlisting}
+
+\note{60 seconds (09:00--10:00). The doctype is a declaration, not a visible content element or a paired tag. Treat lang as the document language setting for now; attribute syntax follows before links. This skeleton is intentionally incomplete until the complete-page example. Transition: The document separates information about the page from visible content.}
+\end{frame}
+
+% Slide 14: 60 seconds (10:00–11:00).
+\begin{frame}[fragile]{The head describes the page}
+\begin{conceptblock}
+\texttt{head} holds document metadata. UTF-8 declares the character encoding; save the file as UTF-8 too.
+\end{conceptblock}
+\begin{lstlisting}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <!-- Body content will go here. -->
+</html>
+\end{lstlisting}
+
+\note{60 seconds (10:00--11:00). Place this inside \texttt{html}. Explain that \texttt{meta} is a void element and needs no closing tag. Metadata is not the visible event announcement. Transition: One piece of metadata gives the browser tab a name.}
+\end{frame}
+
+% Slide 15: 60 seconds (11:00–12:00).
+\begin{frame}[fragile]{Title names the browser tab}
+\begin{conceptblock}
+Put \texttt{title} inside \texttt{head}. The tab title and visible page heading serve different roles.
+\end{conceptblock}
+\begin{lstlisting}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Campus Web Development Meetup</title>
+  </head>
+  <!-- Body content will go here. -->
+</html>
+\end{lstlisting}
+
+\small Expected: this text labels the browser tab.
+\note{60 seconds (11:00--12:00). Show the prepared browser tab. The text will also appear in the body as an \texttt{h1}, but neither element replaces the other. Transition: Where do visitors see the actual announcement?}
+\end{frame}
+
+% Slide 16: 60 seconds (12:00–13:00).
+\begin{frame}[fragile]{Body holds the visible content}
+\begin{conceptblock}
+\texttt{body} follows \texttt{head}, inside \texttt{html}. Visible headings, paragraphs, lists, links, and images go here.
+\end{conceptblock}
+\begin{lstlisting}
+<html lang="en">
+  <head>
+    <!-- Page metadata goes here. -->
+  </head>
+  <body>
+    <h1>Campus Web Development Meetup</h1>
+  </body>
+</html>
+\end{lstlisting}
+
+\small Expected: the event name appears on the page.
+\note{60 seconds (12:00--13:00). Contrast this heading with the tab title. The other event content will be inserted below the heading. Transition: Put the pieces together.}
+\end{frame}
+
+% Slide 17: 60 seconds (13:00–14:00).
+\begin{frame}[fragile]{Our smallest complete page}
+\begin{lstlisting}[basicstyle=\ttfamily\small]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Campus Web Development Meetup</title>
+</head>
+<body>
+  <h1>Campus Web Development Meetup</h1>
+</body>
+</html>
+\end{lstlisting}
+\small One head, one body; both inside the root element.
+\note{60 seconds (13:00--14:00). Trace the complete structure once. Expected output: a tab title and one visible main heading. Keep the code large enough to read; use the full slide for the example. Transition: Our page needs more useful information.}
+\end{frame}
+
+% Slide 18: 60 seconds (14:00–15:00).
+\begin{frame}[fragile]{Headings organize the announcement}
+\begin{conceptblock}
+Use one main \texttt{h1} in this page, then \texttt{h2} for sections. HTML offers \texttt{h1} through \texttt{h6}; choose levels for hierarchy rather than visual size.
+\end{conceptblock}
+\begin{lstlisting}
+<h1>Campus Web Development Meetup</h1>
+<h2>About the meetup</h2>
+\end{lstlisting}
+
+\note{60 seconds (14:00--15:00). Explain the page-title/section relationship. We only need levels 1 and 2 for this small document. Transition: Add the information beneath each heading.}
+\end{frame}
+
+% Slide 19: 60 seconds (15:00–16:00).
+\begin{frame}[fragile]{Paragraphs explain the event}
+\begin{conceptblock}
+A paragraph groups related prose. Source-code line breaks and extra spaces do not normally produce matching visual spacing.
+\end{conceptblock}
+\begin{lstlisting}
+<p>A meetup for beginner web developers.</p>
+<p>Schedule: Friday, 3:00 PM.</p>
+\end{lstlisting}
+
+\note{60 seconds (15:00--16:00). These become separate paragraphs. Use paragraph elements rather than repeated blank lines in the editor. The first paragraph receives emphasis in the next slide. Transition: Some words deserve meaningful emphasis.}
+\end{frame}
+
+% Slide 20: 60 seconds (16:00–17:00).
+\begin{frame}[fragile]{Mark importance and emphasis}
+\begin{conceptblock}
+\texttt{strong} marks importance; \texttt{em} marks stress emphasis. Browsers usually show bold and italic respectively, but the elements communicate meaning.
+\end{conceptblock}
+\begin{lstlisting}
+<p>A meetup for <strong>beginner web developers</strong>.</p>
+<p><em>No prior HTML experience is required.</em></p>
+\end{lstlisting}
+
+\note{60 seconds (16:00--17:00). Link back to nesting: the paragraph contains another element. Avoid presenting these as general-purpose styling tools. Transition: Our event introduction now has structure and meaning.}
+\end{frame}
+
+% Slide 21: 60 seconds (17:00–18:00).
+\begin{frame}[fragile]{Preview the event introduction}
+\begin{conceptblock}
+Combine familiar elements into a readable introduction.
+\end{conceptblock}
+\begin{lstlisting}
+<h2>About the meetup</h2>
+<p>A meetup for <strong>beginner web developers</strong>.</p>
+<p><em>No prior HTML experience is required.</em></p>
+<p>Schedule: Friday, 3:00 PM.</p>
+\end{lstlisting}
+
+\note{60 seconds (17:00--18:00). Show the matching browser section. Ask which element is the section heading; answer \texttt{h2}. This is a body excerpt, not a second complete document. Transition: Visitors also need a preparation checklist and an agenda.}
+\end{frame}
+
+% Slide 22: 60 seconds (18:00–19:00).
+\begin{frame}[fragile]{Unordered lists group items}
+\begin{conceptblock}
+\texttt{ul} represents a list whose order is not significant. Each item belongs in \texttt{li}.
+\end{conceptblock}
+\begin{lstlisting}
+<h2>Things to bring</h2>
+<ul>
+  <li>Laptop</li>
+  <li>Notebook</li>
+</ul>
+\end{lstlisting}
+
+\small Expected: two bullet items under Things to bring.
+\note{60 seconds (18:00--19:00). Expected output: a section heading and two bullet items. The bullets come from default browser presentation. Transition: The agenda has a sequence, so it needs a different list.}
+\end{frame}
+
+% Slide 23: 60 seconds (19:00–20:00).
+\begin{frame}[fragile]{Ordered lists show sequence}
+\begin{conceptblock}
+\texttt{ol} represents an ordered list. It uses the same \texttt{li} elements; the browser normally numbers them.
+\end{conceptblock}
+\begin{lstlisting}
+<h2>Agenda</h2>
+<ol>
+  <li>Meet the group</li>
+  <li>Explore HTML</li>
+  <li>Build a page</li>
+</ol>
+\end{lstlisting}
+
+\small Expected: three numbered agenda items.
+\note{60 seconds (19:00--20:00). Contrast ``what to bring'' with ``what happens first, next, last.'' Students do not need to type numbers into the item text. Transition: Check that each item belongs inside its list.}
+\end{frame}
+
+% Slide 24: 60 seconds (20:00–21:00).
+\begin{frame}[fragile]{Put list items inside their list}
+\begin{commonmistake}
+Nest \texttt{li} elements inside \texttt{ul} or \texttt{ol}. Close each item before starting the next in our examples.
+\end{commonmistake}
+\begin{lstlisting}
+<ul>
+  <li>Laptop</li>
+  <li>Notebook</li>
+</ul>
+\end{lstlisting}
+
+\note{60 seconds (20:00--21:00). Trace the outer list and its two children. Ask ``Which element changes for a numbered agenda?'' Answer: replace \texttt{ul} with \texttt{ol}. This lesson does not introduce multilevel lists. Transition: Some elements need extra information.}
+\end{frame}
+
+% Recap of slides 18--24, before introducing attributes.
+\begin{frame}[fragile]{Our event page so far}
+\begin{lstlisting}[basicstyle=\ttfamily\fontsize{8}{8.5}\selectfont,aboveskip=0pt,belowskip=0pt]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page metadata goes here. -->
+</head>
+<body>
+  <h1>Campus Web Development Meetup</h1>
+  <h2>About the meetup</h2>
+  <p>A meetup for <strong>beginner web developers</strong>.</p>
+  <p><em>No prior HTML experience is required.</em></p>
+  <p>Schedule: Friday, 3:00 PM.</p>
+  <h2>Things to bring</h2>
+  <ul>
+    <li>Laptop</li><li>Notebook</li>
+  </ul>
+  <h2>Agenda</h2>
+  <ol>
+    <li>Meet the group</li><li>Explore HTML</li><li>Build a page</li>
+  </ol>
+</body>
+</html>
+\end{lstlisting}
+\note{Recap the combined output of slides 18--24: the main heading, introduction, emphasis, schedule, preparation list, and ordered agenda. The metadata comment stands in for the head content already taught. Each list item is a separate element even when shown on the same source line. Transition: Some elements need extra information, supplied through attributes.}
+\end{frame}
+
+% Slide 25: 60 seconds (21:00–22:00).
+\begin{frame}[fragile]{Attributes supply details: links connect pages}
+\begin{conceptblock}
+Attributes appear in the opening tag. In today's examples they use \texttt{name="value"}. Use lowercase names and quote values consistently.
+\end{conceptblock}
+\begin{lstlisting}
+<a href="https://www.dlsu.edu.ph/">Visit the DLSU website</a>
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{a} defines a hyperlink.
+\item \texttt{href} is the attribute name; the URL is its destination value.
+\item ``Visit the DLSU website'' is the visible, clickable link text.
+\end{itemize}
+\small Expected: a campus-information link that opens the DLSU website.
+\note{120 seconds (21:00--23:00). Label the element name, attribute name, URL value, and visible link text. This example uses an absolute URL and opens in the same tab by default. It is a campus information link, not an event registration form. Do not imply that every HTML attribute requires a value; this lesson uses valued attributes. Transition: Make the destination clear before someone clicks.}
+\end{frame}
+
+% Slide 27: 60 seconds (23:00–24:00).
+\begin{frame}[fragile]{Write useful link text}
+\begin{conceptblock}
+Descriptive link text helps readers and assistive technology users understand the destination. Keep the URL inside \texttt{href}.
+\end{conceptblock}
+\begin{lstlisting}
+<h2>Campus information</h2>
+<p>
+  <a href="https://www.dlsu.edu.ph/">Visit the DLSU website</a>
+</p>
+\end{lstlisting}
+
+\note{60 seconds (23:00--24:00). Compare the phrase verbally with the vague ``click here.'' Read the section as a visitor would. Internet access is needed to load the external site, but not to display the local HTML page. Transition: Finally, add an image that supports the announcement.}
+\end{frame}
+
+% Slide 28: 60 seconds (24:00–25:00).
+\begin{frame}[fragile]{Images use a source path}
+\begin{conceptblock}
+\texttt{img} embeds an image. \texttt{src} locates the file. \texttt{img} is void: it has no closing tag.
+\end{conceptblock}
+\begin{lstlisting}
+<img src="meetup.jpg"
+     alt="Students collaborating on a web page">
+\end{lstlisting}
+
+\small Keep \texttt{meetup.jpg} beside \texttt{index.html}.
+\note{60 seconds (24:00--25:00). Put \texttt{meetup.jpg} beside \texttt{index.html}. This is a relative file path; it must match the real filename and extension. The alternative text is explained next. Use a suitably sized image in the prepared preview; no sizing attributes are introduced here. Transition: What should this image communicate when it cannot be seen?}
+\end{frame}
+
+% Slide 29: 60 seconds (25:00–26:00).
+\begin{frame}[fragile]{Alternative text describes the image's purpose}
+\begin{conceptblock}
+\texttt{alt} supplies a text alternative for informative images, including for screen readers. Describe useful content rather than the filename.
+\end{conceptblock}
+\begin{lstlisting}
+<h2>Meetup snapshot</h2>
+<img src="meetup.jpg"
+     alt="Students collaborating on a web page">
+\end{lstlisting}
+
+\note{60 seconds (25:00--26:00). The description must match the actual photo. If a student uses a different image, they must change the alt text. Purely decorative images use empty \texttt{alt=""}; today's example is informative. Broken images may expose the alternative text, but alt is not a substitute for fixing a path. Transition: We now have all the parts of our announcement.}
+\end{frame}
+
+% Slide 30: 45 seconds (26:00–26:45).
+\begin{frame}[fragile]{Last part of our event page}
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize]
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Page metadata goes here. --></head>
+<body>
+  <!-- Other content. -->
+  <h2>Campus information</h2>
+  <p>
+    <a href="https://www.dlsu.edu.ph/">Visit the DLSU website</a>
+  </p>
+  <h2>Meetup snapshot</h2>
+  <img src="meetup.jpg"
+       alt="Students collaborating on a web page">
+</body>
+</html>
+\end{lstlisting}
+\note{45 seconds (26:00--26:45). Recap the link and image examples together inside the body. The comments stand in for metadata and earlier event content. Identify href as the link destination, src as the image path, and alt as its text alternative. Keep meetup.jpg beside index.html and match the alternative text to the actual image. Transition: How do students run this example after the discussion?}
+\end{frame}
+
+% Slide 31: 45 seconds (26:45–27:30).
+\begin{frame}{Edit, save, open, refresh}
+\centering
+\vfill
+\begin{tikzpicture}[
+  cyclebox/.style={draw=DLSUGreen,fill=DLSUPale,rounded corners,
+    minimum height=16mm,text width=30mm,align=center,
+    font=\large\bfseries,text=DLSUInk},
+  flow/.style={->,thick,draw=DLSUGreen,>=stealth}
+]
+\node[cyclebox] (edit) at (0,0) {Edit};
+\node[cyclebox] (save) at (4.2,0) {Save};
+\node[cyclebox] (browser) at (8.4,0) {Open / refresh\\browser};
+\draw[flow] (edit) -- (save);
+\draw[flow] (save) -- (browser);
+\draw[flow] (browser.south) -- ++(0,-1.2)
+  -| node[pos=0.25,below,font=\normalsize] {Repeat after each change} (edit.south);
+\end{tikzpicture}
+\vfill
+\small Save as \texttt{index.html}. Open it once; refresh after saving changes.
+\vfill
+\note{45 seconds (26:45--27:30). Demonstrate using prepared windows. Warn about accidentally saving \texttt{index.html.txt}. Keep the image beside the file. Full instructions are in Appendix B. Transition: If the result surprises you, check a few simple things first.}
+\end{frame}
+
+% Slide 32: 30 seconds (27:30–28:00).
+\begin{frame}{Three common mistakes}
+\begin{commonmistake}
+Check tag pairs, image paths, and the difference between tab title and visible heading.
+\end{commonmistake}
+\begin{workedexample}
+\texttt{<h1>Meetup</p>} $\rightarrow$ use \texttt{</h1>}; missing \texttt{meetup.jpg} $\rightarrow$ check filename/location; changing \texttt{title} $\rightarrow$ updates the tab, not the body heading.
+\end{workedexample}
+\note{30 seconds (27:30--28:00). Deliver these as three fast checks. Remind students that a browser can display malformed HTML without a clear error message. Transition: Let's check the main ideas before independent work.}
+\end{frame}
+
+% Closing cover slide.
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\end{document}

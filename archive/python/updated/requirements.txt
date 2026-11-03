@@ -1,5 +1,0 @@
-# Notebook tools only. Lesson code uses the Python standard library.
-jupyterlab>=4.2,<5
-ipykernel>=6.29,<7
-nbformat>=5.10,<6
-nbclient>=0.10,<0.11

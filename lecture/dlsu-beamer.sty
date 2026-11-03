@@ -1,0 +1,65 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dlsu-beamer}[2026/11/03 DLSU teaching presentation]
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern}
+\RequirePackage{graphicx}
+\RequirePackage{listings}
+\RequirePackage{pgfpages}
+
+% Working design palette; not an official brand specification.
+\definecolor{DLSUGreen}{HTML}{006747}
+\definecolor{DLSUInk}{HTML}{17312B}
+\definecolor{DLSUPale}{HTML}{F2F6F4}
+\setbeamercolor{normal text}{fg=DLSUInk,bg=white}
+\setbeamercolor{structure}{fg=DLSUGreen}
+\setbeamercolor{frametitle}{fg=DLSUGreen,bg=white}
+\setbeamercolor{title}{fg=DLSUGreen}
+\setbeamercolor{subtitle}{fg=DLSUInk}
+\setbeamercolor{block title}{fg=white,bg=DLSUGreen}
+\setbeamercolor{block body}{fg=DLSUInk,bg=DLSUPale}
+\setbeamercolor{alerted text}{fg=DLSUGreen}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamerfont{title}{size=\LARGE,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamersize{text margin left=9mm,text margin right=9mm}
+\setbeameroption{hide notes}
+
+% Arguments: short course label, session label, logo file.
+\newcommand{\DLSUSetup}[3]{%
+  \def\DLSUCourse{#1}\def\DLSUSession{#2}\def\DLSULogo{#3}}
+\DLSUSetup{HTML Foundations}{Introduction to HTML}{DLSU-CCS-Logo-Clear.png}
+\institute{De La Salle University Manila\\College of Computer Studies}
+\titlegraphic{\includegraphics[width=42mm,height=17mm,keepaspectratio]{\DLSULogo}}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=8mm,dp=2mm,leftskip=5mm,rightskip=5mm]{normal text}
+    \includegraphics[width=17mm,height=6mm,keepaspectratio]{\DLSULogo}%
+    \hspace{2mm}\tiny College of Computer Studies\hfill
+    \DLSUCourse\enspace\textbar\enspace\DLSUSession\enspace
+    \insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}}}
+
+% Semantic teaching blocks; standard Beamer handles their layout.
+\newenvironment{conceptblock}{\begin{block}{Key concept}}{\end{block}}
+\newenvironment{workedexample}{\begin{block}{Worked example}}{\end{block}}
+\newenvironment{commonmistake}{\begin{block}{Common mistake}}{\end{block}}
+\newenvironment{projecttask}{\begin{block}{Your mission}}{\end{block}}
+\newcommand{\DLSUJourney}[1]{%
+  \begin{beamercolorbox}[sep=2mm,wd=\linewidth]{block body}
+  \small\color{DLSUGreen}#1\end{beamercolorbox}}
+% Question, choices/content, answer. Answer lives in presenter notes.
+\newcommand{\DLSUQuickQuiz}[3]{%
+  \begin{frame}{Quick check}
+  \begin{block}{#1}#2\end{block}
+  \note{Answer: #3}
+  \end{frame}}
+\lstdefinestyle{DLSUHTML}{%
+  language=HTML,basicstyle=\ttfamily\small,
+  keywordstyle=\color{DLSUGreen}\bfseries,
+  stringstyle=\color{DLSUGreen},commentstyle=\color{DLSUInk!65},
+  backgroundcolor=\color{DLSUPale},showstringspaces=false,
+  columns=fullflexible,keepspaces=true,breaklines=true,
+  tabsize=2,frame=none,aboveskip=6pt,belowskip=6pt}
+\lstset{style=DLSUHTML}
